@@ -1,3 +1,19 @@
-export const example = "example";
+import { GraphQLClient } from 'graphql-request';
+import { tagsQuery, userQuery} from './queries'
 
-console.log(example);
+const start = async () => {
+    await fetch(tagsQuery);
+    await fetch(userQuery);
+}
+
+const fetch = async (query: string) => {
+    const endpoint = 'http://localhost:3001/graphql';
+    const graphQLClient = new GraphQLClient(endpoint, {
+        headers: {},
+    });
+
+    const data = await graphQLClient.request(query);
+    console.log(JSON.stringify(data, undefined, 2))
+}
+
+start().catch((error: string) => console.error(error));
