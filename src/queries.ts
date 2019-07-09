@@ -7,9 +7,9 @@ export const tagsQuery = `
         }
     `;
 
-export const userQuery = `
+export const userQuery = (userId: number ) => `
     {
-        user(userId: "1") {
+        user(userId: "${userId}") {
             email
             firstName
             lastName

@@ -3,7 +3,7 @@ import { tagsQuery, userQuery} from './queries'
 
 const start = async () => {
     await fetch(tagsQuery);
-    await fetch(userQuery);
+    await fetch(userQuery(2));
 }
 
 const fetch = async (query: string) => {
